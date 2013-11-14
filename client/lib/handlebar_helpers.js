@@ -10,3 +10,7 @@ Handlebars.registerHelper('isActive', function (siteName) {
 Handlebars.registerHelper('fromNow', function (utctime) {
   return moment(utctime).fromNow();
 });
+Handlebars.registerHelper('inc', function (number) {
+  return (~~number)+1; // ~~ makes NaN to 0
+});
+
