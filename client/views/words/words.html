@@ -1,6 +1,6 @@
 <template name="words">
   <div class="container" id="wordDetial">
-    <h3>{{name}}</h3>
+    <h2>{{name}}</h2>
     <div class="descriptions">
       <form id="wordPost">
         <div class="row">
@@ -18,7 +18,17 @@
         <!-- /.row -->
       </form>
       {{#each words}}
-      <div class="description">
+      <div class="word">
+        <div class="col-md2 pull-left">
+          <h4>
+            <a href="/words/{{name}}/{{inc word_sequence}}">
+              {{name}}
+            </a>
+            <sup>
+              {{inc word_sequence}}
+            </sup>
+          </h4>
+        </div>
         <ul class="list-unstyled">
           <li>
             <span><i>{{fromNow create_date}}</i></span>
@@ -26,6 +36,7 @@
           <li>
             {{description}}
           </li>
+        </ul>
       </div>
     </div>
   </div>
