@@ -9,10 +9,9 @@ Template.words.helpers({
 
 Template.words.events({
   "submit #wordPost": function() {
-    Words.insert({
+    Meteor.call('wordPost', {
       name: this.name,
-      description: $("input[type=text]").val(),
-      create_date: Date.now()
+      description: $("input[type=text]").val()
     });
     $("input[type=text]").val('');
     return false;
