@@ -1,0 +1,16 @@
+<template name="home">
+    <div class="jumbotron">
+        <h1>Mindic</h1>
+        <p>
+          Mindic is a new way to discover meaning. This page will give you a quick overview of what you can do, learn, and share with Mindic.
+            <br />
+        </p>
+        <p><a href="/about" class="btn btn-primary btn-lg">Learn more</a></p>
+    </div>
+    <hr />
+    {{#if currentUser}}
+        <p>You're logged in as {{currentUser.username}}, <a href="{{urlFor 'entrySignOut'}}">sing out here</a></p>
+    {{else}}
+        <a href="{{urlFor 'entrySignIn'}}">Sign in here</a> (or if you have no account <a href="{{urlFor 'entrySignUp'}}">sign up</a>)
+    {{/if}}
+</template>

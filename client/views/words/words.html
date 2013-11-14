@@ -1,0 +1,35 @@
+<template name="words">
+  <div class="container" id="wordDetial">
+    <h3>{{name}}</h3>
+    <div class="descriptions">
+      <form id="wordPost">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="input-group">
+              <input type="text" class="form-control">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">add</button>
+            </span>
+            </div>
+            <!-- /input-group -->
+          </div>
+          <!-- /.col-lg-6 -->
+        </div>
+        <!-- /.row -->
+      </form>
+      {{#each words}}
+      <div class="description">
+        <ul class="list-unstyled">
+          <li>
+            <span><i>{{fromNow create_date}}</i></span>
+          </li>
+          <li>
+            {{description}}
+          </li>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+  </div>
+</template>
+
