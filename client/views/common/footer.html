@@ -1,1 +1,13 @@
-<template name="footer">Done by lorem ipsum</template>
+<template name="footer">
+  <div>
+    {{#if currentUser}}
+    You're logged in as {{currentUser.username}}, <a href="{{urlFor 'entrySignOut'}}">sing out here</a>
+    {{else}}
+    <a href="{{urlFor 'entrySignIn'}}">Sign in here</a>
+    {{/if}}
+
+    <span class="pull-right">
+      MinDic by Appsoulute
+    </span>
+  </div>
+</template>
