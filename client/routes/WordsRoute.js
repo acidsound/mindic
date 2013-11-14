@@ -3,7 +3,7 @@ WordsController = RouteController.extend({
   data: function () {
     return {
       name: this.params.word,
-      words: Words.find({name:this.params.word}, {sort:{create_date:-1}})
+      words: Words.find({name:this.params.word}, {sort:{word_sequence:1}})
     }
   }
 });
