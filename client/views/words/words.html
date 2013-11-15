@@ -1,7 +1,16 @@
 <template name="words">
   <div class="container" id="wordDetial">
-    <h2>{{name}}</h2>
+    <div>
+    <h2>{{name}}
+      {{#unless count}}
+      <sup>
+        <span class="label label-danger">new</span>
+      </sup>
+      {{/unless}}
+    </h2>
+    </div>
     <div class="descriptions">
+      {{#if currentUser}}
       <form id="wordPost">
         <div class="row">
           <div class="col-lg-6">
@@ -17,25 +26,29 @@
         </div>
         <!-- /.row -->
       </form>
+      {{/if}}
       {{#each words}}
-      <div class="word">
-        <div class="col-md2 pull-left">
-          <h4>
-            <a href="/words/{{name}}/{{inc word_sequence}}">
-              {{name}}
-            </a>
-            <sup>
-              {{inc word_sequence}}
-            </sup>
-          </h4>
-        </div>
-        <ul class="list-unstyled">
+      <div class="word media">
+        <h4 class="pull-left" >
+          <a href="/words/{{name}}/{{inc word_sequence}}">
+            {{name}}
+          </a>
+          <sup>
+            {{inc word_sequence}}
+          </sup>
+        </h4>
+        <ul class="details list-unstyled media-body">
+          {{#each toArray this}}
           <li>
-            <span><i>{{fromNow create_date}}</i></span>
+            {{#if eq 'create_date' $key}}
+              <span><i>{{fromNow create_date}}</i></span>
+            {{else}}
+              {{#unless eq 'name' $key}}
+                {{$value}}
+              {{/unless}}
+            {{/if}}
           </li>
-          <li>
-            {{description}}
-          </li>
+          {{/each}}
         </ul>
       </div>
     </div>

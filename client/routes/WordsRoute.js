@@ -1,9 +1,11 @@
 WordsController = RouteController.extend({
   template: 'words',
   data: function () {
+    var words = Words.find({name:this.params.word}, {sort:{word_sequence:1}}).fetch();
     return {
       name: this.params.word,
-      words: Words.find({name:this.params.word}, {sort:{word_sequence:1}})
+      words: words,
+      count: words.length
     }
   }
 });
