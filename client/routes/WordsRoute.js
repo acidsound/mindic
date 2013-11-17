@@ -15,8 +15,5 @@ Router.map(function () {
     path: '/words/:word',
     controller: WordsController
   });
-  return {
-    name: this.params
-  }
 });
 
