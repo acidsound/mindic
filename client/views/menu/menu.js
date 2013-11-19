@@ -39,5 +39,10 @@ Template.menu.helpers({
 });
 
 Template.menu.events({
+  "submit #wordSearchForm": function() {
+    Router.go('/words/'+encodeURIComponent($("#searchWord").val()));
+    $("#searchWord").val('');
+    return false;
+  }
 });
 

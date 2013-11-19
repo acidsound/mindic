@@ -12,7 +12,7 @@
         <a class="navbar-brand" href="/">MinDic</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           {{#each route}}
           <li class="{{isActive}}">
@@ -20,6 +20,11 @@
           </li>
           {{/each}}
         </ul>
+        <form class="navbar-form navbar-rigth" id="wordSearchForm">
+          <div class="form-group">
+            <input type="text" id="searchWord" placeholder="look up any word..." class="form-control">
+          </div>
+        </form>
       </div>
       <!--/.navbar-collapse -->
     </div>
