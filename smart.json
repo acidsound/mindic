@@ -5,6 +5,7 @@
     "handlebar-helpers": {},
     "bootstrap3-less": {},
     "accounts-entry": {},
-    "moment": {}
+    "moment": {},
+    "pince": {}
   }
 }
