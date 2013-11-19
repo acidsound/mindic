@@ -1,6 +1,6 @@
-# meteor-boilerplate
+# mindic
 
-This boilerplate is here to give you a structure for typical meteor projects, with a console tool to ease up some tasks
+minimalistic dictionay
 
 ## How to install
 ```
@@ -10,15 +10,8 @@ mrt install
 meteor
 ```
 
-## How to use
-```
-./meteor-boilerplate # Lists all possible commands 
-```
-
-## What's in this boilerplate
-
-The "insecure" and "autopublish" packages are removed by default. Several other packages are added, which are listed on the bottom. There's already a lot of predefined code in this boilerplate, to show you the possible functionality.
-
+## demo
+[mindic_dev](http://mindic.meteor.com) - hosting from meteor.com
 ### Features
 
 * Comprehensible folder structure
