@@ -10,4 +10,18 @@
     <p><a href="/about" class="btn btn-primary btn-lg">Learn more</a></p>
   </div>
   <hr/>
+  <h2>Recently added Words</h2>
+  <div class="row">
+
+  </div>
+    {{#each recentWords}}
+    <span>
+      <a href="/words/{{name}}/{{inc word_sequence}}" class="">{{name}}</a> /
+    </span>
+    {{/each}}
+    <span>
+      ..and {{wordCount}} words registered.
+    </span>
+  </div>
+  </ul>
 </template>

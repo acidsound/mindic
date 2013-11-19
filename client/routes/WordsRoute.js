@@ -4,7 +4,7 @@ WordsController = RouteController.extend({
     return [Meteor.subscribe('words', this.params.word)];
   },
   data: function () {
-    var words = Words.find({}).fetch();
+    var words = Words.find({}, {sort: {word_sequence: 1}});
     return {
       name: this.params.word,
       words: words,
