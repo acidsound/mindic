@@ -41,8 +41,8 @@
           eq $key 'create_user'}}{{displayUser $value}}{{else}}{{#if
           eq $key 'word_sequence'}}{{inc $value}}{{else}}{{#if
           eq $key 'create_date'}}{{fromNow $value}}{{else}}{{$value}}{{/if}}{{/if}}{{/if}}" {{isDisabled $key}}/>
-            {{#unless isDisabled $key}}
             <span class="input-group-btn">
+            {{#unless isDisabled $key}}
               <button class="btn btn-warning remove-atom-attribute"
                       data-logicalid="{{../../../../word._id}}"
                       data-content="{{../../../id}}"
@@ -50,8 +50,12 @@
                       type="button">
                 <i class="glyphicon glyphicon-remove-circle"></i>
               </button>
-            </span>
+            {{else}}
+              <button class="btn btn-inverse" disabled>
+                &nbsp;
+              </button>
             {{/unless}}
+            </span>
           </div>
         </div>
         {{/unless}}
@@ -73,8 +77,8 @@
       {{/constant}}
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-4 input-group">
-          <button class="btn btn-primary btn-sg " type="button">Update</button>
-          <button class="btn btn-danger btn-sg col-sm-offset-1" type="button">Delete</button>
+          <button class="btn btn-primary btn-sg" type="button">Update</button>
+          <button class="btn btn-danger btn-sg" type="button">Delete</button>
         </div>
       </div>
     </form>
