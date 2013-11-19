@@ -25,4 +25,6 @@ Handlebars.registerHelper('toArray', function (obj) {
   })
   return result;
 });
-
+Handlebars.registerHelper('displayUser', function (user) {
+  return user.username;
+});
