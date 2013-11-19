@@ -11,20 +11,27 @@ Handlebars.registerHelper('fromNow', function (utctime) {
   return moment(utctime).fromNow();
 });
 Handlebars.registerHelper('inc', function (number) {
-  return (~~number)+1; // ~~ makes NaN to 0
+  return (~~number) + 1; // ~~ makes NaN to 0
 });
 Handlebars.registerHelper('eq', function (obj1, obj2) {
-  return obj1===obj2;
+  return obj1 === obj2;
 });
 Handlebars.registerHelper('toArray', function (obj) {
   var result = [];
-  _.each(obj, function(value, key){
-    if (key!=='_id') {
-      result.push({"$key":key, "$value":value});
+  _.each(obj, function (value, key) {
+    if (key !== '_id') {
+      result.push({"$key": key, "$value": value});
     }
-  })
+  });
   return result;
 });
 Handlebars.registerHelper('displayUser', function (user) {
   return user.username;
 });
+Handlebars.registerHelper('debug', function (o) {
+  log.debug('--debug--');
+  log.debug(o);
+  log.debug('==debug==');
+  return o;
+});
+
