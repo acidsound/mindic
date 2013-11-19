@@ -1,4 +1,83 @@
 <template name="word">
-    <p>Template word</p>
+  <div class="container" id="wordDetail">
+    <div>
+      <h2>{{name}}
+        <sup>
+          {{#unless word}}
+          <span class="label label-danger">new</span>
+          {{else}}
+          <span>{{inc word.word_sequence}}</span>
+          {{/unless}}
+        </sup>
+      </h2>
+    </div>
+    {{#if currentUser}}
+    <form id="addAtom">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" id="atom-description" class="form-control">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">add description</button>
+            </span>
+          </div>
+          <!-- /input-group -->
+        </div>
+        <!-- /.col-lg-6 -->
+      </div>
+      <!-- /.row -->
+    </form>
+    {{/if}}
+    {{#each word.atoms}}
+    <hr/>
+    <form class="form-horizontal updateAtom" role="form" data-logicalid="{{../word._id}}">
+      <div>
+        {{#each toArray this}}
+        {{#unless eq $key 'id'}}
+        <div class="form-group atom-attribute" data-content="{{$key}}">
+          <label for="input{{$key}}" class="col-sm-2 control-label">{{$key}}</label>
+          <div class="col-sm-4 input-group">
+            <input type="text" data-content="{{$key}}" class="form-control" id="input{{$key}}" placeholder="{{$key}}" value="{{#if
+          eq $key 'create_user'}}{{displayUser $value}}{{else}}{{#if
+          eq $key 'word_sequence'}}{{inc $value}}{{else}}{{#if
+          eq $key 'create_date'}}{{fromNow $value}}{{else}}{{$value}}{{/if}}{{/if}}{{/if}}" {{isDisabled $key}}/>
+            {{#unless isDisabled $key}}
+            <span class="input-group-btn">
+              <button class="btn btn-warning remove-atom-attribute"
+                      data-logicalid="{{../../../../word._id}}"
+                      data-content="{{../../../id}}"
+                      data-title="{{$key}}"
+                      type="button">
+                <i class="glyphicon glyphicon-remove-circle"></i>
+              </button>
+            </span>
+            {{/unless}}
+          </div>
+        </div>
+        {{/unless}}
+        {{/each}}
+      </div>
+      {{#constant}}
+      <div class="form-group">
+        <div class="col-sm-2 input-group">
+          <input class="form-control input-new-key text-right" type="text" placeholder="key"/>
+          <input type="hidden" value="{{_id}}"/>
+        </div>
+        <div class="col-sm-4 input-group">
+          <input class="form-control input-new-value" type="text" placeholder="value"/>
+          <span class="input-group-btn">
+            <button class="btn btn-primary add-atom-attribute" type="submit"><i class="glyphicon glyphicon-edit"></i></button>
+          </span>
+        </div>
+      </div>
+      {{/constant}}
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-4 input-group">
+          <button class="btn btn-primary btn-sg " type="button">Update</button>
+          <button class="btn btn-danger btn-sg col-sm-offset-1" type="button">Delete</button>
+        </div>
+      </div>
+    </form>
+    {{/each}}
+  </div>
 </template>
-

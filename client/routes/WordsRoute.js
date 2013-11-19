@@ -1,7 +1,10 @@
 WordsController = RouteController.extend({
   template: 'words',
+  waitOn: function() {
+    return [Meteor.subscribe('words', this.params.word)];
+  },
   data: function () {
-    var words = Words.find({name:this.params.word}, {sort:{word_sequence:1}}).fetch();
+    var words = Words.find({}).fetch();
     return {
       name: this.params.word,
       words: words,

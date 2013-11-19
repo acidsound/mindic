@@ -1,5 +1,5 @@
 <template name="words">
-  <div class="container" id="wordDetial">
+  <div class="container" id="wordList">
     <div>
     <h2>{{name}}
       {{#unless count}}
@@ -38,22 +38,18 @@
           </sup>
         </h4>
         <ul class="details list-unstyled media-body">
-          {{#each toArray this}}
           <li>
-            {{#if eq 'create_date' $key}}
-              <span><i>{{fromNow create_date}}</i></span>
-            {{else}}
-              {{#unless eq 'name' $key}}
-                {{$value}}
-              {{/unless}}
-            {{/if}}
+            <span><i>{{fromNow create_date}}</i></span>
           </li>
+          {{#each atoms}}
+            {{description}}
           {{/each}}
+          <li>
+          </li>
         </ul>
       </div>
     </div>
   </div>
   {{/each}}
-  </div>
 </template>
 
