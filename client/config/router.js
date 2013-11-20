@@ -6,3 +6,13 @@ Router.configure({
         'menu': { to: 'menu' }
     }
 });
+
+Router.map(function() {
+  return this.route('profile', {
+    path: '/profile',
+    menu: 'main-menu',
+    data: function() {
+      return Meteor.user();
+    }
+  });
+});

@@ -8,6 +8,7 @@
     "moment": {},
     "pince": {},
     "animate-css": {},
-    "iron-router-progress": {}
+    "iron-router-progress": {},
+    "profile": {}
   }
 }
