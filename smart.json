@@ -7,6 +7,7 @@
     "accounts-entry": {},
     "moment": {},
     "pince": {},
-    "animate-css": {}
+    "animate-css": {},
+    "iron-router-progress": {}
   }
 }
