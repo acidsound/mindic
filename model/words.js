@@ -8,7 +8,7 @@ Words.allow({
 
 // Use Meteor.methods for db operations
 Meteor.methods({
-  'wordPost': function(word) {
+  'wordPost': function (word) {
     user = Meteor.user();
     if (!user) {
       throw new Meteor.Error(601, 'You need to login');
@@ -22,22 +22,18 @@ Meteor.methods({
       create_date: Date.now(),
       create_user: user
     });
-    homonymCount = Words.find({name:word.name}).count();
-    Words.insert({
+    homonymCount = Words.find({name: word.name}).count();
+    var wordId = Words.insert({
       name: word.name,
-      atoms: [
-        {
-          id: Meteor.uuid(),
-          description: word.description,
-          sequence: 0,
-          create_user: user,
-          create_date: Date.now()
-        }
-      ],
-      atomCounts: 1,
+      atoms: [],
+      atomsCount: 0,
       word_sequence: homonymCount,
       create_user: user,
       create_date: Date.now()
+    });
+    Meteor.call('addAtom', {
+      word_id: wordId,
+      description: word.description
     });
     return word;
   }

@@ -16,6 +16,15 @@ Handlebars.registerHelper('inc', function (number) {
 Handlebars.registerHelper('eq', function (obj1, obj2) {
   return obj1 === obj2;
 });
+Handlebars.registerHelper('in', function () {
+  var l = arguments.length, i = 1;
+  for (; i < l-1; i++) {
+    if (arguments[0] === arguments[i]) {
+      return true;
+    }
+  }
+  return false;
+});
 Handlebars.registerHelper('toArray', function (obj) {
   var result = [];
   _.each(obj, function (value, key) {

@@ -1,7 +1,9 @@
 WordsController = RouteController.extend({
   template: 'words',
   waitOn: function() {
-    return [Meteor.subscribe('words', this.params.word)];
+    return [
+      Meteor.subscribe('words', this.params.word)
+    ];
   },
   data: function () {
     var words = Words.find({}, {sort: {word_sequence: 1}});

@@ -33,7 +33,7 @@
       {{#each words}}
       <div class="word media">
         <h4 class="pull-left" >
-          <a href="/words/{{name}}/{{inc word_sequence}}">
+          <a href="/word/{{name}}/{{inc word_sequence}}">
             {{name}}
           </a>
           <sup>
@@ -45,7 +45,7 @@
             <span><i>{{fromNow create_date}}</i></span>
           </li>
           {{#each atoms}}
-            {{description}}
+            {{atom_description ../this/_id}}
           {{/each}}
           <li>
           </li>

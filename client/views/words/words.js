@@ -1,6 +1,10 @@
 Template.words.helpers({
   'ErrorAddWord':function() {
     return Session.get('ErrorAddWord');
+  },
+  'atom_description':function(word_id) {
+    var atom = Atoms.findOne({word_id: word_id});
+    return atom && atom.description;
   }
 });
 

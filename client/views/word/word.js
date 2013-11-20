@@ -7,7 +7,10 @@ Template.word.helpers({
 Template.word.events({
   'submit #addAtom': function() {
     var atomDescription = $('#addAtom #atom-description');
-    Meteor.call('addAtom', atomDescription.val(), this.word);
+    Meteor.call('addAtom', {
+      word_id: this.word._id,
+      description: atomDescription.val()
+    });
     atomDescription.val('');
     return false;
   },
@@ -36,9 +39,9 @@ Template.word.events({
   'click .remove-atom-attribute': function(e) {
     log.debug('remove attribute');
     var target=$(e.target).parent();
+    log.debug($(target));
     Meteor.call('deleteAtomAttribute',
       $(target).attr('data-logicalid'),
-      $(target).attr('data-content'),
       $(target).attr('data-title')
     );
     return false;

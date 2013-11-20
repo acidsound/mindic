@@ -8,45 +8,46 @@ Atoms.allow({
 
 // Use Meteor.methods for db operations
 Meteor.methods({
-  'addAtom': function(desc, word) {
-    log.debug(desc, word);
-    return Words.update({
-        _id: word._id
-      },
-      {
+  'addAtom': function(atom) {
+    log.debug('--- addAtom ---');
+    log.debug(atom);
+    var atom_id = Meteor.user() && atom.description && atom.word_id && Atoms.insert({
+      word_id: atom.word_id,
+      description: atom.description,
+      create_user: Meteor.user(),
+      create_date: Date.now()
+    });
+    log.debug('new atom', atom_id, atom.word_id);
+    if (atom_id) {
+      Words.update({
+        _id: atom.word_id
+      }, {
         $push: {
-          atoms: {
-            id: Meteor.uuid(),
-            description: desc,
-            sequence: word.atomCounts,
-            create_user: Meteor.user(),
-            create_date: Date.now()
-          }
-        },
+          atoms: atom_id
+        }
+      }, {
         $inc: {
-          atomCounts:1
+          atomsCount: 1
         }
       });
+    }
+    return atom_id;
   },
-  'updateAtom': function(attr, id) {
+  'updateAtom': function(attr) {
     log.debug('=== method update ===');
-    log.debug(id);
+    var id=attr._id;
+    delete attr._id;
     log.debug(attr);
-    return Meteor.isServer && Words.update({
-      _id:id,
-      'atoms.id':attr.id
-    }, {
-      $set: {
-        'atoms.$': attr
-      }
-    });
+    return Meteor.user() && Atoms.update({
+      _id:id
+    }, {$set: attr});
   },
-  'deleteAtomAttribute': function(word_id, atom_id, attribute) {
+  'deleteAtomAttribute': function(atom_id, attr) {
     var unset = {};
-    unset['atoms.$.'+attribute] = '';
-    return Meteor.isServer && Words.update({
-      _id: word_id,
-      'atoms.id': atom_id
+    unset[attr] = '';
+    log.debug(atom_id, attr);
+    return Meteor.user() && Atoms.update({
+      '_id': atom_id
     }, {
       $unset: unset
     });

@@ -1,20 +1,25 @@
 WordController = RouteController.extend({
   template: 'word',
   waitOn: function() {
-    return [Meteor.subscribe('word', this.params.word, this.params.seq)];
+    return [
+      Meteor.subscribe('word', this.params.word, this.params.seq),
+      Meteor.subscribe('atoms')
+    ];
   },
   data: function() {
-    log.debug(Words.findOne());
+    var _word = Words.find().count() && Words.findOne() || '';
+    log.debug(_word);
     return {
       name: this.params.word,
-      word: Words.findOne()
+      word: _word,
+      atoms: Atoms.find({word_id: '' || _word._id})
     }
   }
 });
 
 Router.map(function () {
   this.route('word', {
-    path: '/words/:word/:seq',
+    path: '/word/:word/:seq',
     controller: WordController
   });
 });

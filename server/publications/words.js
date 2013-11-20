@@ -7,5 +7,5 @@ Meteor.publish('recentWords', function() {
 });
 
 Meteor.publish('allWords', function () {
-  return Words.find({}, {_id:1});
+  return Words.find({});
 });
