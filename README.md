@@ -12,6 +12,10 @@ meteor
 
 ## demo
 [mindic_dev](http://mindic.meteor.com) - hosting from meteor.com
+
+## Accounts
+refer to /private/users.yml
+
 ### Features
 
 * Comprehensible folder structure
