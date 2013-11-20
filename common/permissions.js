@@ -6,3 +6,11 @@ canPostWord = function() {
 canEditWord = function() {
   return false;
 }
+
+canPostAtom = function() {
+  return false;
+}
+
+canEditAtom = function() {
+  return false;
+}
