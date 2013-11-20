@@ -44,9 +44,9 @@
           <li>
             <span><i>{{fromNow create_date}}</i></span>
           </li>
-          {{#each atoms}}
-            {{atom_description ../this/_id}}
-          {{/each}}
+          {{#with atoms}}
+            {{atom_description this}}
+          {{/with}}
           <li>
           </li>
         </ul>

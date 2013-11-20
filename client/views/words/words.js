@@ -2,8 +2,8 @@ Template.words.helpers({
   'ErrorAddWord':function() {
     return Session.get('ErrorAddWord');
   },
-  'atom_description':function(word_id) {
-    var atom = Atoms.findOne({word_id: word_id});
+  'atom_description':function(atom_id) {
+    var atom = Atoms.findOne({_id: typeof atom_id==='object' && atom_id[0]});
     return atom && atom.description;
   }
 });
