@@ -8,7 +8,8 @@
       "bootstrap3-less": {},
       "accounts-entry": {},
       "moment": {},
-      "pince": {}
+      "pince": {},
+      "animate-css": {}
     },
     "packages": {
       "router": {
@@ -45,6 +46,11 @@
         "git": "https://github.com/mad-eye/pince.git",
         "tag": "v0.0.2",
         "commit": "ac4c09d12b850ce09f2deefbcbfd13a6620ec7aa"
+      },
+      "animate-css": {
+        "git": "https://github.com/nate-strauser/meteor-animate-css.git",
+        "tag": "v2.1.0",
+        "commit": "08d7d98ce292d528f05eab91bfb220b3a355c1d5"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
