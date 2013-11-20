@@ -9,6 +9,9 @@
       {{/unless}}
     </h2>
     </div>
+    {{#if ErrorAddWord}}
+    <div class='alert alert-danger animated fadeInUp' id="error-add-word">{{ErrorAddWord}}</div>
+    {{/if}}
     <div class="descriptions">
       {{#if currentUser}}
       <form id="wordPost">

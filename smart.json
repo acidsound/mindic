@@ -6,6 +6,7 @@
     "bootstrap3-less": {},
     "accounts-entry": {},
     "moment": {},
-    "pince": {}
+    "pince": {},
+    "animate-css": {}
   }
 }
