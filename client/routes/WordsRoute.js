@@ -10,7 +10,7 @@ WordsController = RouteController.extend({
     return {
       name: this.params.word,
       words: words,
-      count: words.length
+      count: words.count()
     }
   }
 });
