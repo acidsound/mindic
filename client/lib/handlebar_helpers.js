@@ -35,7 +35,7 @@ Handlebars.registerHelper('toArray', function (obj) {
   return result;
 });
 Handlebars.registerHelper('displayUser', function (user) {
-  return user.username;
+  return "<a href='/profile/"+user._id+"'>"+user.username+"</a>";
 });
 Handlebars.registerHelper('debug', function (o) {
   log.debug('--debug--');

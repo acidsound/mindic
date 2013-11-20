@@ -37,10 +37,14 @@
         <div class="form-group atom-attribute" data-content="{{$key}}">
           <label for="input{{$key}}" class="col-sm-2 control-label">{{$key}}</label>
           <div class="col-sm-4 input-group">
+            {{#if eq $key 'create_user'}}
+            <div class="checkbox">
+              <label>{{{displayUser $value}}}</label>
+            </div>
+            {{else}}
             <input type="text" data-content="{{$key}}" class="form-control" id="input{{$key}}" placeholder="{{$key}}" value="{{#if
-          eq $key 'create_user'}}{{displayUser $value}}{{else}}{{#if
           eq $key 'word_sequence'}}{{inc $value}}{{else}}{{#if
-          eq $key 'create_date'}}{{fromNow $value}}{{else}}{{$value}}{{/if}}{{/if}}{{/if}}" {{isDisabled $key}}/>
+          eq $key 'create_date'}}{{fromNow $value}}{{else}}{{$value}}{{/if}}{{/if}}" {{isDisabled $key}}/>
             <span class="input-group-btn">
             {{#unless isDisabled $key}}
               <button class="btn btn-warning remove-atom-attribute"
@@ -55,6 +59,7 @@
               </button>
             {{/unless}}
             </span>
+            {{/if}}
           </div>
         </div>
         {{/unless}}
