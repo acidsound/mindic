@@ -9,6 +9,8 @@
     "pince": {},
     "animate-css": {},
     "iron-router-progress": {},
-    "roles": {}
+    "roles": {},
+    "Handsontable": {},
+    "jquery-ui-bootstrap": {}
   }
 }

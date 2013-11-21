@@ -6,3 +6,5 @@ Router.configure({
         'menu': { to: 'menu' }
     }
 });
+
+filter={}
