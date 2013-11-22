@@ -12,6 +12,11 @@ AdminController = RouteController.extend({
   waitOn: function() {
     return [Meteor.subscribe('allUsers')];
   },
+  data: function() {
+    return {
+      users: Meteor.users.find()
+    };
+  },
   before: filter.isAdmin
 });
 

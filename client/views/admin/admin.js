@@ -14,7 +14,7 @@ Template.admin.rendered= function() {
       }
     ),
     colHeaders:['date', 'username', 'address', 'verified', 'role'],
-    colWidths: [100, 80, 120, 80, 80, 80, 80],
+    colWidths: [100, 80, 120, 80, 80],
     columns: [
       { data: 'date', type: 'date'},
       { data: 'username', type: 'text'},
