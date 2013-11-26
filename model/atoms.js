@@ -25,10 +25,6 @@ Meteor.methods({
         $push: {
           atoms: atom_id
         }
-      }, {
-        $inc: {
-          atomsCount: 1
-        }
       });
     }
     return atom_id;
