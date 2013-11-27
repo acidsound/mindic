@@ -37,13 +37,20 @@ Template.word.events({
     return false;
   },
   'click .remove-atom-attribute': function(e) {
-    var target=$('i.remove-button', $(e.target).parent());
+    var target=
+      $(e.target).parents('.remove-atom-attribute').length && $(e.target).parents('.remove-atom-attribute') || $(e.target)
     log.debug('remove attribute target', $(target));
 
     Meteor.call('deleteAtomAttribute',
       $(target).attr('data-logicalid'),
       $(target).attr('data-title')
     );
+    return false;
+  },
+  'click .delete': function(e) {
+    var target=$(e.target).parents('.updateAtom');
+    log.debug('remove atom', target);
+    Meteor.call('deleteAtom', this._id, this.word_id);
     return false;
   }
 });

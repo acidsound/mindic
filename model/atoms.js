@@ -54,6 +54,17 @@ Meteor.methods({
       var word = {word_id:'' } && Atoms.findOne({_id: atom_id})
       Meteor.subscribe('atoms_of_word', word.word_id);
     }
+  },
+  'deleteAtom': function(atom_id, word_id) {
+    log.debug('=== atom delete', atom_id, word_id);
+    Words.update({
+      _id: word_id
+    }, {
+      $pop: {
+        atoms: atom_id
+      }
+    });
+    Atoms.remove(atom_id);
   }
 });
 
