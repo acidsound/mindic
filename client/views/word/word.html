@@ -47,11 +47,11 @@
           eq $key 'create_date'}}{{fromNow $value}}{{else}}{{$value}}{{/if}}{{/if}}" {{isDisabled $key}}/>
             <span class="input-group-btn">
             {{#unless isDisabled $key}}
-              <button class="btn btn-warning remove-atom-attribute"
-                      data-logicalid="{{../../../_id}}"
-                      data-title="{{$key}}"
-                      type="button">
-                <i class="glyphicon glyphicon-remove-circle"></i>
+              <button class="btn btn-warning remove-atom-attribute">
+                <i class="glyphicon glyphicon-remove-circle remove-button"
+                   data-logicalid="{{../../../../this._id}}"
+                   data-title="{{$key}}"
+                   type="button"></i>
               </button>
             {{else}}
               <button class="btn btn-inverse" disabled>

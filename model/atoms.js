@@ -8,7 +8,7 @@ Atoms.allow({
 
 // Use Meteor.methods for db operations
 Meteor.methods({
-  'addAtom': function(atom) {
+  'addAtom': function (atom) {
     log.debug('--- addAtom ---');
     log.debug(atom);
     var atom_id = Meteor.user() && atom.description && atom.word_id && Atoms.insert({
@@ -29,24 +29,31 @@ Meteor.methods({
     }
     return atom_id;
   },
-  'updateAtom': function(attr) {
-    log.debug('=== method update ===');
-    var id=attr._id;
+  'updateAtom': function (attr) {
+    log.debug('=== atom-attr update ===');
+    var id = attr._id;
     delete attr._id;
     log.debug(attr);
-    return Meteor.user() && Atoms.update({
-      _id:id
+    Meteor.user() && Atoms.update({
+      _id: id
     }, {$set: attr});
+    if (Meteor.isClient) {
+      Meteor.subscribe('atoms_of_word', attr.word_id);
+    }
   },
-  'deleteAtomAttribute': function(atom_id, attr) {
+  'deleteAtomAttribute': function (atom_id, attr) {
+    log.debug('=== atom-attr delete ===', atom_id, attr);
     var unset = {};
     unset[attr] = '';
-    log.debug(atom_id, attr);
-    return Meteor.user() && Atoms.update({
+    Meteor.user() && Atoms.update({
       '_id': atom_id
     }, {
       $unset: unset
     });
+    if (Meteor.isClient && atom_id) {
+      var word = {word_id:'' } && Atoms.findOne({_id: atom_id})
+      Meteor.subscribe('atoms_of_word', word.word_id);
+    }
   }
 });
 

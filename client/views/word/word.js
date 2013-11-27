@@ -37,9 +37,9 @@ Template.word.events({
     return false;
   },
   'click .remove-atom-attribute': function(e) {
-    log.debug('remove attribute');
-    var target=$(e.target).parent();
-    log.debug($(target));
+    var target=$('i.remove-button', $(e.target).parent());
+    log.debug('remove attribute target', $(target));
+
     Meteor.call('deleteAtomAttribute',
       $(target).attr('data-logicalid'),
       $(target).attr('data-title')

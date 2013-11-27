@@ -11,4 +11,3 @@ Meteor.publish('atoms_of_word', function (wordid) {
     word_id: wordid
   });
 });
-
