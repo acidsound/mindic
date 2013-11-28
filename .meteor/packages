@@ -14,8 +14,15 @@ bootstrap3-less
 accounts-password
 accounts-entry
 accounts-ui
-
-router
 page-js-ie-support
 HTML5-History-API
 moment
+pince
+animate-css
+iron-router-progress
+coffeescript
+roles
+Handsontable
+jquery-ui-bootstrap
+jquery-ui
+#appcache
