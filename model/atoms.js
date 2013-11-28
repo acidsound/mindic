@@ -60,7 +60,7 @@ Meteor.methods({
     Words.update({
       _id: word_id
     }, {
-      $pop: {
+      $pull: {
         atoms: atom_id
       }
     });
