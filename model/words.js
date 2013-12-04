@@ -34,6 +34,9 @@ Meteor.methods({
       word_id: wordId,
       description: word.description
     });
+    if (Meteor.isClient) {
+      Meteor.subscribe('words', word.name);
+    }
     return word;
   }
 });

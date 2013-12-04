@@ -2,7 +2,7 @@ function loadUser(user) {
   var userAlreadyExists = typeof Meteor.users.findOne({ username: user.username }) === 'object';
 
   if (!userAlreadyExists) {
-    log.debug('usercreate : ', db.user.username);
+    log.debug('usercreate : ', user.username);
     var id = Accounts.createUser(user);
     Meteor.users.update({_id: id}, {$set:{'emails.0.verified': true}});
     user.role && Roles.addUsersToRoles(id, user.role);

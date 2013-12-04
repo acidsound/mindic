@@ -2,8 +2,7 @@ WordsController = RouteController.extend({
   template: 'words',
   waitOn: function() {
     return [
-      Meteor.subscribe('words', this.params.word),
-      Meteor.subscribe('atoms_in_words', this.params.word)
+      Meteor.subscribe('words', this.params.word)
     ];
   },
   data: function () {
