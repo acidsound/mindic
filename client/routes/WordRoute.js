@@ -1,7 +1,6 @@
 WordController = RouteController.extend({
   template: 'word',
   waitOn: function () {
-    var word = Words.findOne({name: this.params.word, word_sequence: this.params.seq - 1}) || {_id: 0};
     return [
       Meteor.subscribe('word', this.params.word, this.params.seq)
     ];
