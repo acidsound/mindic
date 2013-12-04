@@ -19,6 +19,11 @@
             <a href="{{url}}">{{menuName}}</a>
           </li>
           {{/each}}
+          {{#if isInRole 'admin'}}
+          <li>
+            <a href="/admin">admin</a>
+          </li>
+          {{/if}}
         </ul>
         <form class="navbar-form navbar-rigth" id="wordSearchForm">
           <div class="form-group">
